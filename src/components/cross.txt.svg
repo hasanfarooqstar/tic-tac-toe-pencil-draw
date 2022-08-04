@@ -1,0 +1,10 @@
+<svg width="332" height="325" viewBox="0 0 332 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="332" height="325" fill="#F5F5F5" />
+        <rect width="332" height="325" fill="white" />
+        <path class="crossline1"
+            d="M316 21.0046C286.058 11.6868 259.861 37.1476 242.263 50.2613C198.714 82.7115 149.723 112.598 111.502 148.358C75.6901 181.862 50.1429 224.379 33.8317 264.352C28.364 277.751 30.4479 292.456 24 306"
+            stroke="black" stroke-width="18" stroke-linecap="round" />
+        <path class="crossline2"
+            d="M14 18C79.6721 66.0733 148.847 118.743 198.835 175.301C236.136 217.503 267.052 262.093 306 303"
+            stroke="black" stroke-width="18" stroke-linecap="round" />
+    </svg>

@@ -1,38 +1,206 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0f7456;
+}
+.heading,
+.game-info {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.heading {
+  font-size: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  color: yellow;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.game-info {
+  margin-bottom: 5px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hfull {
+  height: 100vh;
+  width: 100vw;
+}
+.board {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  width: 68vw;
+  height: 90vh;
+}
+/* .board::before {
+  content: "";
+  background-image: url("/public/img/board.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* margin: auto;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+
+  
+} */
+.container {
+  /* padding: 25px; */
+  width: 700px;
+  height: 700px;
+  position: relative;
+  /* background-color: rgb(8, 91, 164); */
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr); */
+  gap: 10px;
+  /* border: 5px solid black; */
 }
 
-.App-link {
-  color: #61dafb;
+.block {
+  width: 210px;
+  height: 210px;
+  cursor: pointer;
+  padding: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 5px solid black; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* General classes start */
+.flx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+/* General classes End */
+
+/* ##################################
+#####################################
+##################################### */
+
+/* Animation Section start */
+
+.verticalLine {
+  /* width: 100%; */
+  stroke-dasharray: 1318;
+  /* stroke-dashoffset: 0; */
+  animation: 1s svgverticalLine linear;
+}
+@keyframes svgverticalLine {
+  0% {
+    stroke-dashoffset: 1318;
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+    stroke-dashoffset: 0;
   }
 }
+.line2-parent {
+  padding-left: 155px;
+  height: fit-content;
+  position: absolute;
+}
+.line3-parent {
+  padding-left: 375px;
+  height: fit-content;
+  position: absolute;
+}
+
+.horizontalLine {
+  /* width: 100%; */
+  stroke-dasharray: 1195;
+  /* stroke-dashoffset: 0; */
+  animation: 1s svgHorizontalLine linear;
+}
+
+.vline1-parent {
+  height: 0;
+}
+.vline2-parent {
+  height: 0;
+}
+@keyframes svgHorizontalLine {
+  0% {
+    stroke-dashoffset: 1195;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.tick {
+  height: 300px;
+  width: 300px;
+  fill: transparent;
+  stroke-dasharray: 736;
+  /* stroke-dashoffset: 0; */
+  animation: 0.3s fillsvgTick linear;
+}
+@keyframes fillsvgTick {
+  0% {
+    stroke-dashoffset: 736;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.crossline1 {
+  height: 300px;
+  width: 300px;
+  stroke-dasharray: 736;
+  /* stroke-dashoffset: 0; */
+  animation: 0.5s fillsvg1 linear;
+}
+
+.crossline2 {
+  height: 300px;
+  width: 300px;
+
+  stroke-dasharray: 736;
+  /* stroke-dashoffset: 0; */
+  animation: 0.7s fillsvg2 linear;
+}
+
+@keyframes fillsvg1 {
+  0% {
+    stroke-dashoffset: 736;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillsvg2 {
+  0% {
+    visibility: hidden;
+    stroke-dashoffset: 736;
+  }
+
+  50% {
+    visibility: visible;
+    stroke-dashoffset: 736;
+  }
+
+  100% {
+    visibility: visible;
+    stroke-dashoffset: 0;
+  }
+}
+/* Animation Section end  */

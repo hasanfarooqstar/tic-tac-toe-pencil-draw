@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .crossline1 {
+            height: 500px;
+            width: 50px;
+            stroke-dasharray: 736;
+            /* stroke-dashoffset: 0; */
+            animation: 0.5s fillsvg1 linear;
+
+        }
+
+        .crossline2 {
+
+            height: 500px;
+            width: 50px;
+            stroke-dasharray: 736;
+            /* stroke-dashoffset: 0; */
+            animation: 0.7s fillsvg2 linear;
+
+
+        }
+
+        @keyframes fillsvg1 {
+            0% {
+                stroke-dashoffset: 736;
+            }
+
+
+
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fillsvg2 {
+            0% {
+                visibility: hidden;
+                stroke-dashoffset: 736;
+            }
+
+            50% {
+                visibility: visible;
+                stroke-dashoffset: 736;
+            }
+
+
+
+            100% {
+                visibility: visible;
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="491" height="368" viewBox="0 0 491 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="491" height="368" fill="#F5F5F5" />
+        <rect width="491" height="368" fill="white" />
+        <path
+            d="M18 150.029C20.5251 179.681 22.0257 209.815 28.4789 239C34.0032 263.984 53.9749 294.061 56.1665 319.622C56.6371 325.111 54.334 347.522 62.5115 346.991C77.9771 345.987 94.1076 321.854 103.754 312.574C123.967 293.128 150.218 265.858 171 247C197.121 223.297 236.798 215.476 262 191C290 143 349 138 376 99C411 58 434.407 40.5315 471.479 17"
+            stroke="black" stroke-width="18" stroke-linecap="round" />
+    </svg>
+
+    <svg id="line1" width="491" height="368" viewBox="0 0 491 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="491" height="368" fill="#F5F5F5" />
+        <rect width="491" height="368" fill="white" />
+        <path
+            d="M18 150.029C20.5251 179.681 22.0257 209.815 28.4789 239C34.0032 263.984 53.9749 294.061 56.1665 319.622C56.6371 325.111 54.334 347.522 62.5115 346.991C77.9771 345.987 94.1076 321.854 103.754 312.574C123.967 293.128 150.218 265.858 171 247C197.121 223.297 236.798 215.476 262 191C290 143 349 138 376 99C411 58 434.407 40.5315 471.479 17"
+            stroke="black" stroke-width="18" stroke-linecap="round" />
+    </svg>
+
+    <svg width="332" height="325" viewBox="0 0 332 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="332" height="325" fill="#F5F5F5" />
+        <rect width="332" height="325" fill="white" />
+        <path class="crossline1"
+            d="M316 21.0046C286.058 11.6868 259.861 37.1476 242.263 50.2613C198.714 82.7115 149.723 112.598 111.502 148.358C75.6901 181.862 50.1429 224.379 33.8317 264.352C28.364 277.751 30.4479 292.456 24 306"
+            stroke="black" stroke-width="18" stroke-linecap="round" />
+        <path class="crossline2"
+            d="M14 18C79.6721 66.0733 148.847 118.743 198.835 175.301C236.136 217.503 267.052 262.093 306 303"
+            stroke="black" stroke-width="18" stroke-linecap="round" />
+    </svg>
+    <img src="cross.txt.svg" alt="">
+
+
+
+
+</body>
+
+</html>
