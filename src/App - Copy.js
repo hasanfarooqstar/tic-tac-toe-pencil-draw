@@ -1,9 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect, useMemo } from "react";
 import Block from "./components/Block";
-import chalkLineSound from "./components/sounds/chalk-line.mp3";
-import tickaudio from "./components/sounds/tick.mp3";
-import crossaudio from "./components/sounds/cross.mp3";
 
 function App() {
   const [gameline, setGameline] = useState(["", "", "", ""]);
@@ -98,61 +95,77 @@ function App() {
       </svg>
     );
   };
-  const lineSound = new Audio(chalkLineSound);
-  const tickSound = new Audio(tickaudio);
-  const crossSound = new Audio(crossaudio);
   // const audioo = new Audio(
-  //   "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-46416/zapsplat_office_chalk_draw_line_on_chalkboard_005_51975.mp3"
+  //   "/chalk1s.mp3"
   // );
+  const audioo = new Audio(
+    "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-46416/zapsplat_office_chalk_draw_line_on_chalkboard_005_51975.mp3"
+  );
   useEffect(() => {
     if (gameline[0] == "") {
       gameline[0] = horizontalLine();
       setGameline([...gameline]);
-      lineSound.play();
+      audioo.play();
     }
     if (gameline[1] == "") {
       setTimeout(() => {
         gameline[1] = horizontalLine();
         setGameline([...gameline]);
-        lineSound.play();
+        audioo.play();
       }, 1000);
     }
     if (gameline[2] == "") {
       setTimeout(() => {
         gameline[2] = verticalLine();
         setGameline([...gameline]);
-        lineSound.play();
+        audioo.play();
       }, 2000);
     }
     if (gameline[3] == "") {
       setTimeout(() => {
         gameline[3] = verticalLine();
         setGameline([...gameline]);
-        lineSound.play();
+        audioo.play();
       }, 3000);
     }
   }, []);
+  // const timer = () => {
+  // gameline[0] = horizontalLine();
+  // setGameline([...gameline]);
+  // const line1time = () => {
+  //   clearTimeout(line1time);
+  // };
+  // setTimeout(() => {
+  //   gameline[2] = horizontalLine();
+  //   setGameline([...gameline]);
+  // }, 2000);
+  // setTimeout(() => {
+  //   gameline[3] = horizontalLine();
+  //   setGameline([...gameline]);
+  // }, 3000);
+  // ####################
+  // old Code Version 1
+  // setTimeout(() => {
+  //   // console.log("lineNumber", lineNumber, "timeinMS", timeinMS);
+  //   gameline[lineNumber] = line();
+  //   setGameline([...gameline]);
+  // }, timeinMS);
+  // };
 
   const [mark, setMark] = useState([...initialMarkState]);
   const [boxvalue, setBoxvalue] = useState([...initialBoxValue]);
   const [player, setPlayer] = useState(1);
   const [counter, setCounter] = useState(0);
+  const [winnerExist, setWinnerExist] = useState(false);
 
   const onClick = (position) => {
+    console.log("Clicked on Position:" + position);
     console.log("onclick" + counter);
     if (mark[position] === "" && boxvalue[position] === 0) {
       setCounter(counter + 1);
-      // mark[position] = player === 1 ? tick : cross;
-      if (player === 1) {
-        tickSound.play();
-        mark[position] = tick;
-        setMark([...mark]);
-      } else {
-        crossSound.play();
-        mark[position] = cross;
-        setMark([...mark]);
-      }
+      mark[position] = player === 1 ? tick : cross;
       boxvalue[position] = player === 1 ? 1 : 2;
+      setMark([...mark]);
       setBoxvalue([...boxvalue]);
       setPlayer(player == 1 ? 0 : 1);
     } else {
@@ -163,11 +176,11 @@ function App() {
     setMark([...initialMarkState]);
     setBoxvalue([...initialBoxValue]);
     setCounter(0);
+    setWinnerExist(false);
   };
 
   useEffect(() => {
     console.log("useEffect" + counter);
-
     const combinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -178,11 +191,10 @@ function App() {
       [0, 4, 8],
       [2, 4, 6],
     ];
-    let winnerExist = false;
     for (let c of combinations) {
       if (boxvalue[c[0]] == 1 && boxvalue[c[1]] === 1 && boxvalue[c[2]] === 1) {
         console.log("Player 1 win");
-        winnerExist = true;
+        setWinnerExist(true);
 
         setTimeout(() => {
           reset();
@@ -192,7 +204,7 @@ function App() {
 
       if (boxvalue[c[0]] == 2 && boxvalue[c[1]] == 2 && boxvalue[c[2]] == 2) {
         console.log("Player 2 win");
-        winnerExist = true;
+        setWinnerExist(true);
 
         setTimeout(() => {
           reset();
@@ -200,17 +212,15 @@ function App() {
         }, 500);
       }
     }
-
-    if (winnerExist === false && counter === 9) {
-      setTimeout(() => {
-        alert("Match is Draw");
-        reset();
-      }, 600);
+    if (counter == 9 && winnerExist == false) {
+      alert("Match is Draw");
+      reset();
     }
-  }, [mark, boxvalue]);
+  }, [counter, winnerExist, mark, boxvalue]);
 
   return (
     <>
+      {/* {audioo.play()} */}
       {console.log("app.js")}
 
       <div className="board">
@@ -220,7 +230,6 @@ function App() {
             RESET
           </button>
         </h1>
-
         <div className="container">
           <div className="flx line2-parent">
             {/* {gameline[2] ? gameline[2] : timer(verticalLine, 2, 3000)} */}
